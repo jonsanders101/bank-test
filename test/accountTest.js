@@ -9,6 +9,6 @@ describe('Account', function () {
   });
   it('initializes with empty list of transactions', function() {
     var account = new Account();
-    assert(account.transactions.length === 0);
+    assert(account.getTransactions().length === 0);
   });
 });

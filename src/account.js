@@ -8,5 +8,9 @@
     return this.balance;
   };
 
+  Account.prototype.getTransactions = function () {
+    return this.transactions;
+  };
+
   exports.Account = Account;
 })(this);
