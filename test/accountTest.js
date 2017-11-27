@@ -25,7 +25,11 @@ describe('Account', function () {
       assert(account.getBalance() === 20);
     });
     it('raises error if given negative integer', function () {
-      assert.throws(account.deposit(-1), 'deposit amount must be a positive number in pence');
+      assert.throws(
+        function () {
+          account.deposit(-1);
+        },
+        'Deposit amount must be a positive number in pence');
     });
   });
 });
