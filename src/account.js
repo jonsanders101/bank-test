@@ -11,8 +11,9 @@
     getTransactions: function () {
       return this.transactions;
     },
-    deposit: function (amount) {
+    deposit: function (amount, transaction) {
       if (amount <= 0) throw 'Deposit amount must be a positive number in pence';
+      this.transactions.push(new transaction(amount));
       this.balance += amount;
     },
     withdraw: function (amount) {

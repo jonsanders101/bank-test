@@ -4,6 +4,7 @@ var Account = require('../src/account.js').Account;
 
 describe('Account', function () {
   var account;
+  var transactionMock = function () {};
 
   beforeEach(function() {
     account = new Account();
@@ -20,8 +21,8 @@ describe('Account', function () {
 
   describe('#deposit', function () {
     it('increases account balance by given amount', function () {
-      account.deposit(13);
-      account.deposit(7);
+      account.deposit(13, transactionMock);
+      account.deposit(7, transactionMock);
       assert(account.getBalance() === 20);
     });
     it('raises error if given negative integer', function () {
@@ -30,10 +31,17 @@ describe('Account', function () {
     it('raises error if given zero', function () {
       assert.throws(() => { account.deposit(0); },'Deposit amount must be a positive number in pence');
     });
+    it('adds new Transaction object to transactions list', function () {
+      transactionMock = function (credit) {
+        return { credit: credit };
+      };
+      account.deposit(7, transactionMock);
+      assert(account.getTransactions()[account.getTransactions().length - 1].credit === 7);
+    });
   });
   describe('#withdraw', function () {
     it('descreases account balance by given amount', function () {
-      account.deposit(13);
+      account.deposit(13, transactionMock);
       account.withdraw(7);
       assert(account.getBalance() === 6);
     });

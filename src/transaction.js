@@ -5,6 +5,5 @@
     this.debit = amount < 0 ? -amount : 0;
     this.balance = balance;
   }
-
   exports.Transaction = Transaction;
 })(this);
