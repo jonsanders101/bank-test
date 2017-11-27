@@ -7,7 +7,7 @@ describe('Account', function () {
   var transactionMock = function () {};
 
   beforeEach(function() {
-    account = new Account();
+    account = new Account(transactionMock);
   });
 
   describe('#new', function () {
@@ -21,15 +21,15 @@ describe('Account', function () {
 
   describe('#deposit', function () {
     it('increases account balance by given amount', function () {
-      account.deposit(13, transactionMock);
-      account.deposit(7, transactionMock);
+      account.deposit(13);
+      account.deposit(7);
       assert(account.getBalance() === 20);
     });
     it('raises error if given negative integer', function () {
-      assert.throws(() => { account.deposit(-1, transactionMock); },'Deposit amount must be a positive number in pence');
+      assert.throws(() => { account.deposit(-1); },'Deposit amount must be a positive number in pence');
     });
     it('raises error if given zero', function () {
-      assert.throws(() => { account.deposit(0, transactionMock); },'Deposit amount must be a positive number in pence');
+      assert.throws(() => { account.deposit(0); },'Deposit amount must be a positive number in pence');
     });
     it('adds new Transaction object to transactions list', function () {
       transactionMock = function (amount, balance) {
@@ -37,38 +37,41 @@ describe('Account', function () {
                 balance: balance };
       };
 
+      account = new Account(transactionMock);
+
       function lastTransaction() {
         return account.getTransactions()[account.getTransactions().length - 1];
       }
 
-      account.deposit(7, transactionMock);
+      account.deposit(7);
       assert(lastTransaction().credit === 7);
       assert(lastTransaction().balance === 7);
     });
   });
   describe('#withdraw', function () {
     it('descreases account balance by given amount', function () {
-      account.deposit(13, transactionMock);
-      account.withdraw(7, transactionMock);
+      account.deposit(13);
+      account.withdraw(7);
       assert(account.getBalance() === 6);
     });
     it('raises error if given negative integer', function () {
-      assert.throws(() => { account.deposit(-1, transactionMock); },'Deposit amount must be a positive number in pence');
+      assert.throws(() => { account.deposit(-1); },'Deposit amount must be a positive number in pence');
     });
     it('raises error if given zero', function () {
-      assert.throws(() => { account.deposit(0, transactionMock); },'Deposit amount must be a positive number in pence');
+      assert.throws(() => { account.deposit(0); },'Deposit amount must be a positive number in pence');
     });
     it('adds new Transaction object to transactions list', function () {
       transactionMock = function (amount, balance) {
         return { debit: -amount,
                 balance: balance };
       };
+      account = new Account(transactionMock);
 
       function lastTransaction() {
         return account.getTransactions()[account.getTransactions().length - 1];
       }
-      account.deposit(20, transactionMock);
-      account.withdraw(3, transactionMock);
+      account.deposit(20);
+      account.withdraw(3);
       assert(lastTransaction().debit === 3);
       assert(lastTransaction().balance === 17);
     });

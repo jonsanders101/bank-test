@@ -1,7 +1,8 @@
 (function(exports){
-  function Account () {
+  function Account (transaction = Transaction) {
     this.balance = 0;
     this.transactions = [];
+    this.transaction = transaction;
   }
 
   Account.prototype = {
@@ -11,15 +12,15 @@
     getTransactions: function () {
       return this.transactions;
     },
-    deposit: function (amount, transaction = Transaction) {
+    deposit: function (amount) {
       if (amount <= 0) throw 'Deposit amount must be a positive number in pence';
       this.balance += amount;
-      this.transactions.push(new transaction(amount, this.getBalance()));
+      this.transactions.push(new this.transaction(amount, this.getBalance()));
     },
-    withdraw: function (amount, transaction) {
+    withdraw: function (amount) {
       if (amount <= 0) throw 'Deposit amount must be a positive number in pence';
       this.balance -= amount;
-      this.transactions.push(new transaction(-amount, this.getBalance()));
+      this.transactions.push(new this.transaction(-amount, this.getBalance()));
     },
     printStatement: function () {
       var statement = "date || credit || debit || balance\n";
