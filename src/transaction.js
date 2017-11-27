@@ -1,7 +1,8 @@
 (function(exports){
-  function Transaction (credit) {
+  function Transaction (amount) {
     this.date = new Date();
-    this.credit = credit;
+    this.credit = amount > 0 ? amount : 0;
+    this.debit = amount < 0 ? -amount : 0;
   }
 
   exports.Transaction = Transaction;
