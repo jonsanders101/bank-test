@@ -19,9 +19,10 @@ describe('Account', function () {
   });
 
   describe('#deposit', function () {
-    it('#increases account balance', function () {
+    it('#increases account balance by given amount', function () {
       account.deposit(13);
-      assert(account.getBalance() === 13);
+      account.deposit(7);
+      assert(account.getBalance() === 20);
     });
   });
 });
