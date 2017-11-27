@@ -31,7 +31,9 @@ describe('Transaction', function () {
         assert(transaction.credit === 0);
       });
     });
-
-
+    it('initializes with balance value', function () {
+      transaction = new Transaction (7, 700);
+      assert(transaction.balance === 700);
+    });
   });
 });
