@@ -3,12 +3,16 @@ var assert = chai.assert;
 var Account = require('../src/account.js').Account;
 
 describe('Account', function () {
+  var account;
+
+  beforeEach(function() {
+    account = new Account();
+  });
+
   it('initializes with a balance of 0', function() {
-    var account = new Account();
     assert(account.getBalance() === 0);
   });
   it('initializes with empty list of transactions', function() {
-    var account = new Account();
     assert(account.getTransactions().length === 0);
   });
 });
