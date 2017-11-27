@@ -1,0 +1,20 @@
+{
+  "name": "bank-test",
+  "version": "1.0.0",
+  "description": "Command line bank interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "bank",
+    "tech",
+    "test"
+  ],
+  "author": "Jon Sanders",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
