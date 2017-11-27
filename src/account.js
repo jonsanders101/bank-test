@@ -12,6 +12,7 @@
       return this.transactions;
     },
     deposit: function (amount) {
+      if (amount <= 0) throw 'Deposit amount must be a positive number in pence';
       this.balance += amount;
     }
   };

@@ -19,10 +19,13 @@ describe('Account', function () {
   });
 
   describe('#deposit', function () {
-    it('#increases account balance by given amount', function () {
+    it('increases account balance by given amount', function () {
       account.deposit(13);
       account.deposit(7);
       assert(account.getBalance() === 20);
+    });
+    it('raises error if given negative integer', function () {
+      assert.throws(account.deposit(-1), 'deposit amount must be a positive number in pence');
     });
   });
 });

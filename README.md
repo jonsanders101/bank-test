@@ -23,8 +23,13 @@ $ node
 You should now be in the Node.js REPL. To begin executing bank functions:
 
 ```
-> var index = require('./src/index.js')
-> index.someFunction()
+> var Account = require('./src/account.js').Account
+> var account = new Account()
+> account
+{ balance: 0, transactions: [] }
+> account.deposit(75)
+> account
+{ balance: 75, transactions: [] }
 ```
 To quit the Node.js REPL:
 
