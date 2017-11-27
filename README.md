@@ -38,3 +38,13 @@ To quit the Node.js REPL:
 $ cd bank-test
 $ npm test
 ```
+
+## Notes on approach
+
+Here are a collection of notes which I will add to as I complete the task which give an indication to my approach.
+
+I intend to write fuller documentation on completion, but you may follow this list of notes through my commit history to see a 'live' version of decisions as they're made.
+
+* Account object will hold many transaction objects
+* Currency will be handled on lowest denomination (e.g. pence) and will be formatted when the statement is printed
+* '#deposit' and '#withdraw' methods will accept positive integers
