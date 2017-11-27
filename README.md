@@ -24,6 +24,7 @@ You should now be in the Node.js REPL. To begin executing bank functions:
 
 ```
 > var Account = require('./src/account.js').Account
+> var Transaction = require('./src/account.js').Account
 > var account = new Account()
 > account
 { balance: 0, transactions: [] }
@@ -52,4 +53,4 @@ I intend to write fuller documentation on completion, but you may follow this li
 
 * Account object will hold many transaction objects
 * Currency will be handled on lowest denomination (e.g. pence) and will be formatted when the statement is printed
-* '#deposit' and '#withdraw' methods will accept positive integers
+* '#deposit' and '#withdraw' methods will accept positive integer
