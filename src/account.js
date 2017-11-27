@@ -10,6 +10,9 @@
     },
     getTransactions: function () {
       return this.transactions;
+    },
+    deposit: function (amount) {
+      this.balance += amount;
     }
   };
 
