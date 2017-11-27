@@ -33,11 +33,17 @@ describe('Account', function () {
     });
     it('adds new Transaction object to transactions list', function () {
       transactionMock = function (amount, balance) {
-        return { credit: amount, balance: balance };
+        return { credit: amount,
+                balance: balance };
       };
+
+      function lastTransaction() {
+        return account.getTransactions()[account.getTransactions().length - 1];
+      }
+      
       account.deposit(7, transactionMock);
-      assert(account.getTransactions()[account.getTransactions().length - 1].credit === 7);
-      assert(account.getTransactions()[account.getTransactions().length - 1].balance === 7);
+      assert(lastTransaction().credit === 7);
+      assert(lastTransaction().balance === 7);
     });
   });
   describe('#withdraw', function () {
