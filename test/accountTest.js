@@ -7,4 +7,8 @@ describe('Account', function () {
     var account = new Account();
     assert(account.getBalance() === 0);
   });
+  it('initializes with empty list of transactions', function() {
+    var account = new Account();
+    assert(account.transactions.length === 0);
+  });
 });
