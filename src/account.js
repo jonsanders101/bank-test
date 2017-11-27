@@ -4,12 +4,13 @@
     this.transactions = [];
   }
 
-  Account.prototype.getBalance = function () {
-    return this.balance;
-  };
-
-  Account.prototype.getTransactions = function () {
-    return this.transactions;
+  Account.prototype = {
+    getBalance: function () {
+      return this.balance;
+    },
+    getTransactions: function () {
+      return this.transactions;
+    }
   };
 
   exports.Account = Account;
