@@ -13,8 +13,8 @@
     },
     deposit: function (amount, transaction) {
       if (amount <= 0) throw 'Deposit amount must be a positive number in pence';
-      this.transactions.push(new transaction(amount));
       this.balance += amount;
+      this.transactions.push(new transaction(amount, this.getBalance()));
     },
     withdraw: function (amount) {
       if (amount <= 0) throw 'Deposit amount must be a positive number in pence';

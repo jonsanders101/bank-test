@@ -32,11 +32,12 @@ describe('Account', function () {
       assert.throws(() => { account.deposit(0); },'Deposit amount must be a positive number in pence');
     });
     it('adds new Transaction object to transactions list', function () {
-      transactionMock = function (credit) {
-        return { credit: credit };
+      transactionMock = function (amount, balance) {
+        return { credit: amount, balance: balance };
       };
       account.deposit(7, transactionMock);
       assert(account.getTransactions()[account.getTransactions().length - 1].credit === 7);
+      assert(account.getTransactions()[account.getTransactions().length - 1].balance === 7);
     });
   });
   describe('#withdraw', function () {
