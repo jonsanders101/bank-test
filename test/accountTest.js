@@ -9,11 +9,13 @@ describe('Account', function () {
     account = new Account();
   });
 
-  it('initializes with a balance of 0', function() {
-    assert(account.getBalance() === 0);
-  });
-  it('initializes with empty list of transactions', function() {
-    assert(account.getTransactions().length === 0);
+  describe('#new', function () {
+    it('initializes with a balance of 0', function() {
+      assert(account.getBalance() === 0);
+    });
+    it('initializes with empty list of transactions', function() {
+      assert(account.getTransactions().length === 0);
+    });
   });
 
   describe('#deposit', function () {
